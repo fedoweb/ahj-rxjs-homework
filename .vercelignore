@@ -1,0 +1,27 @@
+# Игнорировать всё
+*
+
+# Исключения: разрешить только необходимые файлы
+!public
+!server
+!vercel.json
+
+# Внутри server разрешить только нужные файлы
+server/*
+!server/server.js
+!server/package.json
+!server/package-lock.json
+
+# Внутри public разрешить всё
+public/**
+
+# Игнорировать специфичные файлы и папки
+.git
+.gitignore
+.vercelignore
+node_modules
+*.log
+.DS_Store
+.env
+.vscode
+.idea
