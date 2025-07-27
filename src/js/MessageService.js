@@ -5,8 +5,6 @@ import { ajax } from 'rxjs/ajax';
 export default class MessageService {
   constructor(url) {
     this.apiUrl = url;
-    this.POOL_INTERVAL = 5000;
-    this.obs$ = null;
   }
 
   //запрос на сервер (получение новых сообщений)

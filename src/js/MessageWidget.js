@@ -13,7 +13,19 @@ export default class MessageWidget {
   }
 
   init() {
-    this.service = new MessageService('http://localhost:3000/messages/unread');
+    let apiUrl;
+  
+    if (window.location.hostname === 'localhost') {
+      apiUrl = 'http://localhost:3000/messages/unread';
+    } 
+    else if (window.location.hostname.includes('github.io')) {
+      apiUrl = 'https://your-vercel-app.vercel.app/messages/unread';
+    }
+    else {
+      apiUrl = 'https://your-vercel-app.vercel.app/messages/unread';
+    }
+
+    this.service = new MessageService(apiUrl);
     this.startPolling();
   }
 

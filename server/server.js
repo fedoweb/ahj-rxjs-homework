@@ -31,7 +31,23 @@ router.get('/messages/unread', async (ctx) => {
 });
 
 // Настройка CORS
-app.use(cors());
+app.use(cors({
+  origin: ctx => {
+    const allowedOrigins = [
+      'http://localhost:9000', // Для локального фронтенда
+      'https://your-github-username.github.io', // GitHub Pages
+      'https://your-vercel-app.vercel.app' // Vercel фронтенд
+    ];
+    
+    const requestOrigin = ctx.headers.origin;
+    if (allowedOrigins.includes(requestOrigin)) {
+      return requestOrigin;
+    }
+    return allowedOrigins[0];
+  },
+  allowMethods: ['GET'],
+  credentials: true
+}));
 
 // Подключение роутера
 app.use(router.routes());
