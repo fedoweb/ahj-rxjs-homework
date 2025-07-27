@@ -32,35 +32,32 @@ router.get('/messages/unread', async (ctx) => {
 
 // Настройка CORS
 app.use(cors({
-  origin: '*', // Разрешить все домены временно
+  origin: ctx => {
+    const allowedOrigins = [
+      'http://localhost:9000',
+      'https://fedoweb.github.io',
+      'https://ahj-rxjs-homework-*.vercel.app'
+    ];
+    
+    const requestOrigin = ctx.headers.origin;
+    
+    // Разрешаем все поддомены Vercel
+    if (requestOrigin && requestOrigin.includes('ahj-rxjs-homework-') && 
+        requestOrigin.endsWith('.vercel.app')) {
+      return requestOrigin;
+    }
+    
+    if (allowedOrigins.includes(requestOrigin)) {
+      return requestOrigin;
+    }
+    
+    return allowedOrigins[0]; // Возвращаем первый разрешенный, если не нашли
+  },
   allowMethods: ['GET'],
+  credentials: true,
+  exposeHeaders: ['Content-Length', 'X-Koa-Request-Id'],
+  maxAge: 3600
 }));
-
-// app.use(cors({
-//   origin: ctx => {
-//     const allowedOrigins = [
-//       'http://localhost:9000', // Для локальной разработки
-//       'https://fedoweb.github.io', // GitHub Pages
-//       'https://ahj-rxjs-homework-*.vercel.app' // Все поддомены Vercel
-//     ];
-    
-//     const requestOrigin = ctx.headers.origin;
-    
-//     // Разрешаем все поддомены Vercel
-//     if (requestOrigin?.includes('ahj-rxjs-homework-') && 
-//         requestOrigin?.endsWith('.vercel.app')) {
-//       return requestOrigin;
-//     }
-    
-//     if (allowedOrigins.includes(requestOrigin)) {
-//       return requestOrigin;
-//     }
-    
-//     return allowedOrigins[0];
-//   },
-//   allowMethods: ['GET'],
-//   credentials: true
-// }));
 
 // Подключение роутера
 app.use(router.routes());
