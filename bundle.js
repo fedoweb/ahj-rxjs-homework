@@ -3781,8 +3781,6 @@ var MessageService = /*#__PURE__*/function () {
   function MessageService(url) {
     _classCallCheck(this, MessageService);
     this.apiUrl = url;
-    this.POOL_INTERVAL = 5000;
-    this.obs$ = null;
   }
 
   //запрос на сервер (получение новых сообщений)
@@ -3840,7 +3838,15 @@ var MessageWidget = /*#__PURE__*/function () {
   return _createClass(MessageWidget, [{
     key: "init",
     value: function init() {
-      this.service = new _MessageService__WEBPACK_IMPORTED_MODULE_3__["default"]('http://localhost:3000/messages/unread');
+      var apiUrl;
+      if (window.location.hostname === 'localhost') {
+        apiUrl = 'http://localhost:3000/messages/unread';
+      } else if (window.location.hostname.includes('github.io')) {
+        apiUrl = 'https://your-vercel-app.vercel.app/messages/unread';
+      } else {
+        apiUrl = 'https://your-vercel-app.vercel.app/messages/unread';
+      }
+      this.service = new _MessageService__WEBPACK_IMPORTED_MODULE_3__["default"](apiUrl);
       this.startPolling();
     }
   }, {
