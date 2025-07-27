@@ -9,19 +9,15 @@ export default class MessageWidget {
     this.POOL_INTERVAL = 10000;
     this.obs$ = null;
 
+    this.BASE_URL = window.location.hostname === 'localhost' 
+      ? 'http://localhost:3000' 
+      : 'https://ahj-rxjs-homework.vercel.app';
+
     this.init();
   }
 
   init() {
-    let apiUrl;
-  
-    if (window.location.hostname === 'localhost') {
-      apiUrl = 'http://localhost:3000/messages/unread';
-    }
-    else {
-      apiUrl = 'https://ahj-rxjs-homework-5rtrnn24t-fedowebs-projects.vercel.app/messages/unread';
-    }
-
+    const apiUrl = `${this.BASE_URL}/messages/unread`;
     this.service = new MessageService(apiUrl);
     this.startPolling();
   }

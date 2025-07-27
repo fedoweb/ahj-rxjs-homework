@@ -20,9 +20,16 @@ module.exports = {
         liveReload: true,
         open: true,
         historyApiFallback: true,
-        // proxy: {
-        //   '/messages/unread': 'http://localhost:3000'
-        // },
+        proxy: {
+          '/messages/unread': {
+            target: 'https://ahj-rxjs-homework.vercel.app',
+            changeOrigin: true,
+            secure: false,
+            headers: {
+              'Origin': 'http://localhost:9000'
+            }
+          }
+        },
         watchFiles: ['src/'],
       },
     module: {
