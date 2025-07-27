@@ -1,0 +1,28 @@
+td {
+  padding: 10px;
+}
+
+.messages_container {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: gray;
+}
+
+.messages_title {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.messages_table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.message_item {
+
+  border: 1px solid gray;
+}
+
+.message_item:hover {
+  background-color: #f5f5f5;
+}
