@@ -6,4 +6,4 @@
 
 ## Ссылки
 - [Демо фронтенда](https://fedoweb.github.io/ahj-rxjs-homework/)
-- [API бэкенда](https://ahj-rxjs-homework.vercel.app/messages/unread)
+- [API бэкенда](https://ahj-rxjs-homework-git-main-fedowebs-projects.vercel.app/messages/unread)
