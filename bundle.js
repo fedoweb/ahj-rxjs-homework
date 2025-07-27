@@ -3841,8 +3841,6 @@ var MessageWidget = /*#__PURE__*/function () {
       var apiUrl;
       if (window.location.hostname === 'localhost') {
         apiUrl = 'http://localhost:3000/messages/unread';
-      } else if (window.location.hostname.includes('github.io')) {
-        apiUrl = 'https://ahj-rxjs-homework-5rtrnn24t-fedowebs-projects.vercel.app/messages/unread';
       } else {
         apiUrl = 'https://ahj-rxjs-homework-5rtrnn24t-fedowebs-projects.vercel.app/messages/unread';
       }
