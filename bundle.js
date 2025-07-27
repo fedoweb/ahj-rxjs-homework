@@ -3842,9 +3842,9 @@ var MessageWidget = /*#__PURE__*/function () {
       if (window.location.hostname === 'localhost') {
         apiUrl = 'http://localhost:3000/messages/unread';
       } else if (window.location.hostname.includes('github.io')) {
-        apiUrl = 'https://your-vercel-app.vercel.app/messages/unread';
+        apiUrl = 'https://ahj-rxjs-homework-5rtrnn24t-fedowebs-projects.vercel.app/messages/unread';
       } else {
-        apiUrl = 'https://your-vercel-app.vercel.app/messages/unread';
+        apiUrl = 'https://ahj-rxjs-homework-5rtrnn24t-fedowebs-projects.vercel.app/messages/unread';
       }
       this.service = new _MessageService__WEBPACK_IMPORTED_MODULE_3__["default"](apiUrl);
       this.startPolling();
@@ -3923,8 +3923,10 @@ var MessageWidget = /*#__PURE__*/function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MessageWidget__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MessageWidget */ "./src/js/MessageWidget.js");
 
-var container = document.querySelector('.messages_container');
-var widget = new _MessageWidget__WEBPACK_IMPORTED_MODULE_0__["default"](container);
+document.addEventListener('DOMContentLoaded', function () {
+  var container = document.querySelector('.messages_container');
+  var widget = new _MessageWidget__WEBPACK_IMPORTED_MODULE_0__["default"](container);
+});
 
 /***/ })
 
