@@ -32,22 +32,35 @@ router.get('/messages/unread', async (ctx) => {
 
 // Настройка CORS
 app.use(cors({
-  origin: ctx => {
-    const allowedOrigins = [
-      'http://localhost:9000', // Для локального фронтенда
-      'https://your-github-username.github.io', // GitHub Pages
-      'https://your-vercel-app.vercel.app' // Vercel фронтенд
-    ];
-    
-    const requestOrigin = ctx.headers.origin;
-    if (allowedOrigins.includes(requestOrigin)) {
-      return requestOrigin;
-    }
-    return allowedOrigins[0];
-  },
+  origin: '*', // Разрешить все домены временно
   allowMethods: ['GET'],
-  credentials: true
 }));
+
+// app.use(cors({
+//   origin: ctx => {
+//     const allowedOrigins = [
+//       'http://localhost:9000', // Для локальной разработки
+//       'https://fedoweb.github.io', // GitHub Pages
+//       'https://ahj-rxjs-homework-*.vercel.app' // Все поддомены Vercel
+//     ];
+    
+//     const requestOrigin = ctx.headers.origin;
+    
+//     // Разрешаем все поддомены Vercel
+//     if (requestOrigin?.includes('ahj-rxjs-homework-') && 
+//         requestOrigin?.endsWith('.vercel.app')) {
+//       return requestOrigin;
+//     }
+    
+//     if (allowedOrigins.includes(requestOrigin)) {
+//       return requestOrigin;
+//     }
+    
+//     return allowedOrigins[0];
+//   },
+//   allowMethods: ['GET'],
+//   credentials: true
+// }));
 
 // Подключение роутера
 app.use(router.routes());

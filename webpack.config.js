@@ -20,9 +20,9 @@ module.exports = {
         liveReload: true,
         open: true,
         historyApiFallback: true,
-        proxy: {
-          '/messages/unread': 'http://localhost:3000'
-        },
+        // proxy: {
+        //   '/messages/unread': 'http://localhost:3000'
+        // },
         watchFiles: ['src/'],
       },
     module: {
