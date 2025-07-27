@@ -3833,17 +3833,13 @@ var MessageWidget = /*#__PURE__*/function () {
     this.service = null;
     this.POOL_INTERVAL = 10000;
     this.obs$ = null;
+    this.BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://ahj-rxjs-homework.vercel.app';
     this.init();
   }
   return _createClass(MessageWidget, [{
     key: "init",
     value: function init() {
-      var apiUrl;
-      if (window.location.hostname === 'localhost') {
-        apiUrl = 'http://localhost:3000/messages/unread';
-      } else {
-        apiUrl = 'https://ahj-rxjs-homework-5rtrnn24t-fedowebs-projects.vercel.app/messages/unread';
-      }
+      var apiUrl = "".concat(this.BASE_URL, "/messages/unread");
       this.service = new _MessageService__WEBPACK_IMPORTED_MODULE_3__["default"](apiUrl);
       this.startPolling();
     }
